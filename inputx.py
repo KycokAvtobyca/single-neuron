@@ -1,4 +1,4 @@
-from random import uniform, gauss
+from random import uniform
 import math
 
 class InputX:
@@ -8,9 +8,8 @@ class InputX:
             raise ValueError("objectNeuron должен быть объектом класса Neuron")
 
         self._objectNeuron = objectNeuron
-        self._xs = tuple(max(0, min(1, gauss(0.3, 0.2))) for _ in range(n_inputs))
-        self._limit = math.sqrt(6 / (n_inputs + 1))
-        self._ws = tuple(uniform(-self.limit, self.limit) for _ in range(n_inputs))
+        self._xs = tuple(uniform(0, 1) for _ in range(n_inputs))
+        self._ws = tuple(uniform(-1, 1) for _ in range(n_inputs))
     
     @property
     def xs(self):
